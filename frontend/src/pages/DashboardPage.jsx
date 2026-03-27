@@ -165,7 +165,7 @@ const DashboardPage = () => {
       <div className="row mt-4">
         <div className="col-12">
           <div className="card">
-            <div className="card-header">
+            {/*<div className="card-header">
               <h5 className="mb-0">Guía rápida</h5>
             </div>
             <div className="card-body">
@@ -176,7 +176,7 @@ const DashboardPage = () => {
                 <li>Los cursos permiten inscribir alumnos</li>
                 <li>Las inscripciones relacionan alumnos con cursos</li>
               </ul>
-            </div>
+            </div>*/ }
           </div>
         </div>
       </div>
