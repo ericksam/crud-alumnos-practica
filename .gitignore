@@ -28,8 +28,8 @@ npm-debug.log*
 # ============================================
 # BUILD
 # ============================================
-dist/
-build/
+# dist/ - commenting out for Railway deployment
+# build/
 
 # ============================================
 # ARCHIVOS NO DESEADOS
