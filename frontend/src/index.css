@@ -1,0 +1,98 @@
+/* Importar Bootstrap */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Dark mode personalizado */
+:root {
+  --bs-body-bg: #121212;
+  --bs-body-color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: #121212;
+  --bs-body-color: #e0e0e0;
+  --bs-card-bg: #1e1e1e;
+  --bs-table-bg: #1e1e1e;
+  --bs-border-color: #333;
+  --bs-secondary-bg: #2d2d2d;
+  --bs-tertiary-bg: #252525;
+}
+
+/* Estilos globales */
+body {
+  min-height: 100vh;
+  background-color: var(--bs-body-bg);
+}
+
+.card {
+  background-color: var(--bs-card-bg);
+  border: 1px solid var(--bs-border-color);
+}
+
+.form-control,
+.form-select {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #2d2d2d;
+  border-color: #0d6efd;
+  color: #e0e0e0;
+}
+
+.form-control::placeholder {
+  color: #888;
+}
+
+/* Tablas */
+.table {
+  --bs-table-bg: #1e1e1e;
+  --bs-table-color: #e0e0e0;
+}
+
+.table-dark {
+  --bs-table-bg: #1e1e1e;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1e1e1e !important;
+  border-bottom: 1px solid #333;
+}
+
+/* Botón de logout */
+.btn-logout {
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.btn-logout:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+/* Page container */
+.page-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Animación de fade */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

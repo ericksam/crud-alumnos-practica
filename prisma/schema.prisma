@@ -1,0 +1,76 @@
+// Prisma Schema - Sistema de Gestión Académica
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// MODELOS
+// ============================================
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Aula {
+  id        String   @id @default(uuid())
+  nombre    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relaciones
+  alumnos   Alumno[]
+  cursos    Curso[]
+}
+
+model Alumno {
+  id        String   @id @default(uuid())
+  nombre    String
+  email     String   @unique
+  telefono  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relaciones
+  aulaId        String?
+  aula          Aula?          @relation(fields: [aulaId], references: [id])
+  inscripciones Inscripcion[]
+}
+
+model Curso {
+  id          String   @id @default(uuid())
+  nombre      String
+  descripcion String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relaciones
+  aulaId        String?
+  aula          Aula?          @relation(fields: [aulaId], references: [id])
+  inscripciones Inscripcion[]
+}
+
+model Inscripcion {
+  id               String   @id @default(uuid())
+  fechaInscripcion DateTime @default(now())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relaciones
+  alumnoId String
+  cursoId  String
+  alumno   Alumno @relation(fields: [alumnoId], references: [id])
+  curso    Curso  @relation(fields: [cursoId], references: [id])
+
+  // Evitar duplicados: mismo alumno no puede inscribirse dos veces al mismo curso
+  @@unique([alumnoId, cursoId])
+}
